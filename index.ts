@@ -1,5 +1,6 @@
 import DiscordJS, { Intents } from 'discord.js';
 import dotenv from 'dotenv';
+import * as cowsay from 'cowsay';
 
 dotenv.config();
 
@@ -15,6 +16,14 @@ client.on('messageCreate', (message) => {
   if (message.content === 'ping') {
     message.reply({
       content: 'pong',
+    });
+  }
+});
+
+client.on('messageCreate', (message) => {
+  if (message.content === 'cowsay') {
+    message.reply({
+      content: `\`\`\`${cowsay.say({ text: 'Hello Professor Teeters' })}\`\`\``,
     });
   }
 });
