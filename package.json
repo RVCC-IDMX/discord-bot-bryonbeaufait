@@ -3,10 +3,30 @@
     "eslint": "^8.11.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.25.4"
+    "eslint-plugin-import": "^2.25.4",
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0"
-  }
+  },
+  "name": "discord-bot-bryonbeaufait",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RVCC-IDMX/discord-bot-bryonbeaufait.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RVCC-IDMX/discord-bot-bryonbeaufait/issues"
+  },
+  "homepage": "https://github.com/RVCC-IDMX/discord-bot-bryonbeaufait#readme"
 }
