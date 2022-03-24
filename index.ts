@@ -15,18 +15,20 @@ client.on('ready', () => {
 
 client.on('messageCreate', (message) => {
   if (message.content === 'ping') {
-    message.reply({
-      content: 'pong',
-    });
+    message
+      .reply('pong')
+      .then(() => console.log(`Replied to message "${message.content}"`))
+      .catch(console.error);
     message.react('🏓').then(console.log).catch(console.error);
   }
 });
 
 client.on('messageCreate', (message) => {
   if (message.content === 'cowsay') {
-    message.reply({
-      content: `\`\`\`${cowsay.say({ text: 'Hello Professor Teeters' })}\`\`\``,
-    });
+    message
+      .reply(`\`\`\`${cowsay.say({ text: 'Hello Professor Teeters' })}\`\`\``)
+      .then(() => console.log(`Replied to messgage "${message.content}"`))
+      .catch(console.error);
     message.react('🐮').then(console.log).catch(console.error);
   }
 });
