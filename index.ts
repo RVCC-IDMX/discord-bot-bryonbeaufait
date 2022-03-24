@@ -1,6 +1,7 @@
 import DiscordJS, { Intents } from 'discord.js';
 import dotenv from 'dotenv';
 import * as cowsay from 'cowsay';
+import * as unicodeEmoji from 'unicode-emoji';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ client.on('messageCreate', (message) => {
     message.reply({
       content: 'pong',
     });
+    message.react('🏓').catch(console.error);
   }
 });
 
@@ -25,6 +27,7 @@ client.on('messageCreate', (message) => {
     message.reply({
       content: `\`\`\`${cowsay.say({ text: 'Hello Professor Teeters' })}\`\`\``,
     });
+    message.react('🐮').catch(console.error);
   }
 });
 
