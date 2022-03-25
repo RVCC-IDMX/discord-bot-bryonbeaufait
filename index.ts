@@ -9,8 +9,8 @@ let opts: IOptions = {
   text: 'Hello Professor Teeters',
   e: 'Oo',
   T: 'Y',
-  f: 'smiling-octopus',
-  r: false,
+  f: 'mona-lisa',
+  r: true,
   y: false,
 };
 
@@ -23,6 +23,7 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', (message) => {
+  console.log(message.content);
   if (message.content === 'ping') {
     message
       .reply('pong')
@@ -30,12 +31,15 @@ client.on('messageCreate', (message) => {
       .catch(console.error);
     message.react('🏓').then(console.log).catch(console.error);
   }
-});
-
-client.on('messageCreate', (message) => {
   if (message.content === 'cowsay') {
+    let output = cowsay.say(opts);
+    output = output.replace(/```/g, "'''");
+    if (output.length > 1994) {
+      //output = 'The image is too big, try again';
+      output = output.substring(0, 1994);
+    }
     message
-      .reply(`\`\`\`${cowsay.say(opts)}\`\`\``)
+      .reply(`\`\`\`${output}\`\`\``)
       .then(() => console.log(`Replied to messgage "${message.content}"`))
       .catch(console.error);
     message.react('🐮').then(console.log).catch(console.error);
