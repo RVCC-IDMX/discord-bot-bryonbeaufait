@@ -3,8 +3,13 @@ import dotenv from 'dotenv';
 import cowsay from './utils/cowsay';
 
 dotenv.config();
-
+const PREFIX = process.env.PREFIX || null;
 const CHANNELS = process.env.CHANNELS || null;
+
+if (!PREFIX) {
+  console.error('PREFIX is not defined');
+  process.exit(1);
+}
 
 if (!CHANNELS) {
   console.error('CHANNELS is not defined');
@@ -23,9 +28,16 @@ client.on('ready', () => {
 
 client.on('messageCreate', (message) => {
   if (!channels.includes(message.channel.id)) return;
-  if (!message.content.startsWith(`${process.env.PREFIX}`)) return;
-  const args = message.content.toLowerCase().slice().trim().split(/ /);
-  const command = args.reverse().shift()!;
+  if (!message.content.startsWith(`${PREFIX}`)) return;
+  // const args = message.content.toLowerCase().slice().trim().split(/ /);
+  // const command = args.reverse().shift()!;
+  const args = message.content
+    .toLowerCase()
+    .substring(PREFIX.length!)
+    .slice()
+    .trim()
+    .split(/ /);
+  const command = args.shift()!;
   console.log(command);
   if (command === 'ping') {
     message
@@ -36,7 +48,7 @@ client.on('messageCreate', (message) => {
   }
   if (command === 'cowsay') {
     message.react('🐮').then(console.log).catch(console.error);
-    const output = cowsay();
+    const output = cowsay(args[0]);
     message.reply(output).then(console.log).catch(console.error);
   }
 });
