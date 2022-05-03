@@ -30,5 +30,14 @@
   "bugs": {
     "url": "https://github.com/RVCC-IDMX/discord-bot-bryonbeaufait/issues"
   },
-  "homepage": "https://github.com/RVCC-IDMX/discord-bot-bryonbeaufait#readme"
+  "homepage": "https://github.com/RVCC-IDMX/discord-bot-bryonbeaufait#readme",
+  "dev": "nodemon",
+  "watch": [
+    "src"
+  ],
+  "ext": "ts,json",
+  "ignore": [
+    "src/**/*.spec.ts"
+  ],
+  "exec": "ts-node ./src/index.ts"
 }
