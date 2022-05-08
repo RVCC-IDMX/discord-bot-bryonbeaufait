@@ -30,7 +30,7 @@ export default (client: Client) => {
 
     commands[commandName.toLowerCase()] = commandFile;
 
-    console.log(commands);
+    // console.log(commands);
   }
 
   client.on('messageCreate', (message) => {
@@ -63,7 +63,7 @@ export default (client: Client) => {
     if (!commands[commandName]) {
       return;
     }
-    console.log(commandName);
+    // console.log(commandName);
     try {
       commands[commandName].callback(message, ...args);
     } catch (error) {
